@@ -1,25 +1,24 @@
 import javafx.scene.layout.GridPane;
 
-public class Board extends GridPane {
+public class Board{
 
-    private static final int TILE_NUMBER=16;
+    private static final int NUM_TILE=16;
+    private final GridPane board;
 
-    private final double width;
-    private final double height;
+    public Board(GridPane board){
+        this.board=board;
+        initializeBoard();
+    }
 
-    public Board(double width,double height){
-        this.width=width;
-        this.height=height;
-        setPrefSize(width,height);
-        setVgap(0.7);
-        setHgap(0.7);
-        for(int i=0;i<TILE_NUMBER;i++){
-            for(int j=0;j<TILE_NUMBER;j++){
-                add(new Tile(i,j,width/TILE_NUMBER,height/TILE_NUMBER),i,j);
-                setConstraints(new Tile(i,j,width/TILE_NUMBER,height/TILE_NUMBER),i,j);
+    private void initializeBoard(){
+        for(int i=0;i<NUM_TILE;i++){
+            for(int j=0;j<NUM_TILE;j++){
+                board.add(new Tile(i,j,board.getPrefWidth()/NUM_TILE,
+                        board.getPrefHeight()/NUM_TILE),i,j);
             }
         }
-        setStyle("-fx-background-color: black");
     }
+
+
 
 }

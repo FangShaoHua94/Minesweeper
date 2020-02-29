@@ -8,7 +8,7 @@ import javafx.scene.layout.GridPane;
 public class MainWindow extends AnchorPane {
 
     @FXML
-    private GridPane board;
+    private GridPane boardPane;
 
     @FXML
     private AnchorPane topWindow;
@@ -22,20 +22,11 @@ public class MainWindow extends AnchorPane {
     @FXML
     private Label mineCountDisplay;
 
-    private static final int NUM_TILE=16;
+    private Board board;
 
     @FXML
     public void initialize(){
-        double width=board.getPrefWidth();
-        double height=board.getPrefHeight();
-        double tileWidth=width/NUM_TILE;
-        double tileHeight=height/NUM_TILE;
-
-        for(int i=0;i<NUM_TILE;i++){
-            for(int j=0;j<NUM_TILE;j++){
-                board.add(new Tile(i,j,tileWidth,tileHeight),i,j);
-            }
-        }
+        board=new Board(boardPane);
     }
 
     @FXML
