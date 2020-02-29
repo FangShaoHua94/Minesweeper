@@ -1,0 +1,16 @@
+.button{
+    -fx-background-radius: 0;
+    -fx-border-color: gray;
+    -fx-border-width: 0.5;
+}
+
+.label{
+    -fx-background-radius: 0;
+    -fx-background-color: green;
+    -fx-border-color: gray;
+    -fx-border-radius: 0;
+    -fx-border-width: 0.5;
+}
+
+
+
