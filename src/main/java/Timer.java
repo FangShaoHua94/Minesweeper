@@ -5,7 +5,10 @@ import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.beans.property.StringProperty;
 import javafx.util.Duration;
 
-public class Timer {
+import java.util.Observable;
+import java.util.Observer;
+
+public class Timer implements Observer {
 
     private Timeline timeline;
     private final StringProperty timeSeconds = new ReadOnlyStringWrapper(String.format("%03d",0));
@@ -14,11 +17,11 @@ public class Timer {
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), evt -> updateTime()));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeSeconds.set(String.format("%03d",0));
-        activate();
     }
 
     private void activate(){
         timeline.play();
+        timeSeconds.set(String.format("%03d",1));
     }
 
     private void updateTime() {
@@ -28,5 +31,10 @@ public class Timer {
 
     public StringProperty getTimeSeconds(){
         return timeSeconds;
+    }
+
+    @Override
+    public void update(Observable observable, Object o) {
+        activate();
     }
 }

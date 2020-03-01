@@ -34,9 +34,11 @@ public class MainWindow extends AnchorPane {
     @FXML
     public void initialize(){
         timer=new Timer();
-        timeDisplay.textProperty().bind(timer.getTimeSeconds());
         board=new Board(boardPane);
+        board.addObserver(timer);
+        timeDisplay.textProperty().bind(timer.getTimeSeconds());
         mineCountDisplay.textProperty().bind(board.getFlagCountDisplay());
+
     }
 
     @FXML

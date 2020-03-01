@@ -1,4 +1,6 @@
 
+import javafx.beans.InvalidationListener;
+
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.beans.property.StringProperty;
 import javafx.beans.value.ObservableStringValue;
@@ -11,10 +13,11 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 
 import java.sql.Time;
+import java.util.Observable;
 import java.util.Random;
 
 
-public class Board{
+public class Board extends Observable {
 
     private static final int NUM_TILE=16;
     private static final int MINE_COUNT=40;
@@ -105,8 +108,10 @@ public class Board{
         return flagCountDisplay;
     }
 
-
-
+    private void activateTimer(){
+        setChanged();
+        notifyObservers();
+    }
 
 
     class Tile extends StackPane {
@@ -164,6 +169,7 @@ public class Board{
             if(isFirstClick){
                 setMines(this);
                 isFirstClick=false;
+                activateTimer();
             }
             if(isMine){
                 setRedMine();
