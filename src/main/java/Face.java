@@ -1,3 +1,3 @@
 public enum Face {
-    SMILE,OI,COOL,DEAD;
+    SMILE, OI, COOL, DEAD;
 }

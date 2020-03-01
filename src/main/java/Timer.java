@@ -11,29 +11,29 @@ import java.util.Observer;
 public class Timer implements Observer {
 
     private Timeline timeline;
-    private final StringProperty timeSeconds = new ReadOnlyStringWrapper(String.format("%03d",0));
+    private final StringProperty timeSeconds = new ReadOnlyStringWrapper(String.format("%03d", 0));
 
-    public Timer(){
+    public Timer() {
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), evt -> updateTime()));
         timeline.setCycleCount(Animation.INDEFINITE);
-        timeSeconds.set(String.format("%03d",0));
+        timeSeconds.set(String.format("%03d", 0));
     }
 
-    private void activate(){
+    private void activate() {
         timeline.play();
-        timeSeconds.set(String.format("%03d",1));
+        timeSeconds.set(String.format("%03d", 1));
     }
 
-    public void stop(){
+    public void stop() {
         timeline.stop();
     }
 
     private void updateTime() {
         int seconds = Integer.parseInt(timeSeconds.get());
-        timeSeconds.set(String.format("%03d",seconds+1));
+        timeSeconds.set(String.format("%03d", seconds + 1));
     }
 
-    public StringProperty getTimeSeconds(){
+    public StringProperty getTimeSeconds() {
         return timeSeconds;
     }
 

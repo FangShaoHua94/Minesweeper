@@ -15,13 +15,13 @@ public class SmileyBean {
         support.removePropertyChangeListener(listener);
     }
 
-    public Face getFace(){
+    public Face getFace() {
         return face;
     }
 
-    public void setFace(Face newFace){
-        Face oldFace=this.face;
-        this.face=newFace;
-        support.firePropertyChange("face",oldFace,newFace);
+    public void setFace(Face newFace) {
+        Face oldFace = this.face;
+        this.face = newFace;
+        support.firePropertyChange("face", oldFace, newFace);
     }
 }

@@ -35,11 +35,11 @@ public class MainWindow extends AnchorPane {
     private SmileyBean smileyBean;
 
     @FXML
-    public void initialize(){
-        timer=new Timer();
-        smileyBean=new SmileyBean();
-        board=new Board(boardPane,smileyBean);
-        smileyBean.addPropertyChangeListener(e->{
+    public void initialize() {
+        timer = new Timer();
+        smileyBean = new SmileyBean();
+        board = new Board(boardPane, smileyBean);
+        smileyBean.addPropertyChangeListener(e -> {
             changeFace((Face) e.getNewValue());
         });
         setImage(new ImageView(new Image(getClass().getResourceAsStream("/images/smileFace.png"))));
@@ -49,25 +49,25 @@ public class MainWindow extends AnchorPane {
     }
 
     @FXML
-    public void resetGame(){
+    public void resetGame() {
         initialize();
     }
 
-    private void changeFace(Face face){
-        ImageView image=null;
-        switch (face){
+    private void changeFace(Face face) {
+        ImageView image = null;
+        switch (face) {
         case SMILE:
-            image=new ImageView(new Image(getClass().getResourceAsStream("/images/smileFace.png")));
+            image = new ImageView(new Image(getClass().getResourceAsStream("/images/smileFace.png")));
             break;
         case OI:
-            image=new ImageView(new Image(getClass().getResourceAsStream("/images/oiFace.png")));
+            image = new ImageView(new Image(getClass().getResourceAsStream("/images/oiFace.png")));
             break;
         case COOL:
-            image=new ImageView(new Image(getClass().getResourceAsStream("/images/coolFace.png")));
+            image = new ImageView(new Image(getClass().getResourceAsStream("/images/coolFace.png")));
             timer.stop();
             break;
         case DEAD:
-            image=new ImageView(new Image(getClass().getResourceAsStream("/images/deadFace.png")));
+            image = new ImageView(new Image(getClass().getResourceAsStream("/images/deadFace.png")));
             timer.stop();
             break;
         default:
@@ -76,7 +76,7 @@ public class MainWindow extends AnchorPane {
         setImage(image);
     }
 
-    private void setImage(ImageView image){
+    private void setImage(ImageView image) {
         image.setPreserveRatio(true);
         image.fitHeightProperty().bind(smiley.widthProperty());
         image.fitHeightProperty().bind(smiley.heightProperty());
