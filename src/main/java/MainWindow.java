@@ -64,6 +64,7 @@ public class MainWindow extends AnchorPane {
             break;
         case COOL:
             image=new ImageView(new Image(getClass().getResourceAsStream("/images/coolFace.png")));
+            timer.stop();
             break;
         case DEAD:
             image=new ImageView(new Image(getClass().getResourceAsStream("/images/deadFace.png")));
