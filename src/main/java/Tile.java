@@ -6,6 +6,7 @@ import javafx.scene.input.MouseEvent;
 
 public class Tile extends StackPane {
 
+    private static boolean isFirstClick=true;
     private final double width;
     private final double height;
     private final int row;
@@ -45,8 +46,14 @@ public class Tile extends StackPane {
         button.addEventFilter(MouseEvent.MOUSE_PRESSED, e->{
             if(!isRevealed) {
                 if (e.isPrimaryButtonDown()) {
+                    if(isFirstClick){
+                        Board.setMines(row,col);
+                    }
+
                     button.setVisible(false);
                     label.setText("H");
+
+//                    getNeighbouringMineCount();
 //                    revealTile();
                 } else if (e.isSecondaryButtonDown()) {
                     if(!isFlagged){
@@ -70,5 +77,12 @@ public class Tile extends StackPane {
         isFlagged=false;
     }
 
+    public void setMine(){
+        isMine=true;
+    }
+
+    public void isMineTile(){
+        return isMine;
+    }
 
 }
