@@ -10,7 +10,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 
-import java.sql.Time;
 import java.util.Observable;
 import java.util.Random;
 
@@ -21,7 +20,7 @@ public class Board extends Observable {
     private static final int MINE_COUNT = 40;
     private int REVEALED_TILE_COUNT = 0;
     private boolean isFirstClick = true;
-    ;
+
     private final GridPane boardPane;
     private final Tile[][] board = new Tile[NUM_TILE][NUM_TILE];
     private int flagCount = 0;
