@@ -47,7 +47,7 @@ public class Board extends Observable {
     private void setMines(Tile tile){
         for(int i=0;i<MINE_COUNT;i++){
             Tile mineTile;
-            Random random = new Random(System.currentTimeMillis()+i);
+            Random random = new Random(System.currentTimeMillis()*i+System.currentTimeMillis());
             do{
                 mineTile=board[random.nextInt(NUM_TILE)][random.nextInt(NUM_TILE)];
             }while((mineTile.equals(tile) || mineTile.isMineTile()));
