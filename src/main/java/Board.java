@@ -1,6 +1,3 @@
-
-import javafx.beans.InvalidationListener;
-
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.beans.property.StringProperty;
 import javafx.beans.value.ObservableStringValue;
@@ -8,6 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
@@ -25,12 +23,13 @@ public class Board extends Observable {
     private boolean isFirstClick=true;;
     private final GridPane boardPane;
     private final Tile[][] board=new Tile[NUM_TILE][NUM_TILE];
-    private Time timer;
     private int flagCount=0;
     private StringProperty flagCountDisplay=new ReadOnlyStringWrapper(String.format("%03d", MINE_COUNT-flagCount));
+    private SmileyBean smileyBean;
 
-    public Board(GridPane boardPane){
+    public Board(GridPane boardPane,SmileyBean smileyBean){
         this.boardPane = boardPane;
+        this.smileyBean=smileyBean;
         initializeBoard();
     }
 
@@ -83,6 +82,7 @@ public class Board extends Observable {
     }
 
     private void gameLost(){
+        smileyBean.setFace(Face.DEAD);
         for(int i=0;i<NUM_TILE;i++){
             for(int j=0;j<NUM_TILE;j++){
                 board[i][j].stop();
@@ -94,6 +94,7 @@ public class Board extends Observable {
     }
 
     private void gameWon(){
+        smileyBean.setFace(Face.COOL);
         for(int i=0;i<NUM_TILE;i++){
             for(int j=0;j<NUM_TILE;j++){
                 board[i][j].stop();
@@ -112,7 +113,6 @@ public class Board extends Observable {
         setChanged();
         notifyObservers();
     }
-
 
     class Tile extends StackPane {
 
@@ -155,12 +155,16 @@ public class Board extends Observable {
             button.setPrefSize(width,height);
             button.setMinSize(width,height);
             button.addEventFilter(MouseEvent.MOUSE_PRESSED, e->{
-                if(!isRevealed) {
-                    if (e.isPrimaryButtonDown()) {
-                        leftClick();
-                    } else if (e.isSecondaryButtonDown()) {
-                        rightClick();
-                    }
+                if(e.getButton()== MouseButton.PRIMARY){
+                    smileyBean.setFace(Face.OI);
+                }else if (e.getButton()== MouseButton.SECONDARY) {
+                    rightClick();
+                }
+            });
+            button.addEventFilter(MouseEvent.MOUSE_RELEASED, e->{
+                if(e.getButton()== MouseButton.PRIMARY){
+                    smileyBean.setFace(Face.SMILE);
+                    leftClick();
                 }
             });
         }
@@ -187,7 +191,7 @@ public class Board extends Observable {
         }
 
         private void flagTile(){
-            if(isFlagged){
+            if(isFlagged || flagCount==MINE_COUNT){
                 return;
             }
             ImageView image=new ImageView(new Image(getClass().getResourceAsStream("/images/flag.png")));

@@ -24,6 +24,10 @@ public class Timer implements Observer {
         timeSeconds.set(String.format("%03d",1));
     }
 
+    public void stop(){
+        timeline.stop();
+    }
+
     private void updateTime() {
         int seconds = Integer.parseInt(timeSeconds.get());
         timeSeconds.set(String.format("%03d",seconds+1));
