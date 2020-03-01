@@ -1,9 +1,15 @@
 
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.beans.property.ReadOnlyStringWrapper;
+import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.util.Duration;
 
 public class MainWindow extends AnchorPane {
 
@@ -23,16 +29,19 @@ public class MainWindow extends AnchorPane {
     private Label mineCountDisplay;
 
     private Board board;
+    private Timer timer;
 
     @FXML
     public void initialize(){
+        timer=new Timer();
+        timeDisplay.textProperty().bind(timer.getTimeSeconds());
         board=new Board(boardPane);
+        mineCountDisplay.textProperty().bind(board.getFlagCountDisplay());
     }
 
     @FXML
-    public void aaa(){
-        smiley.setStyle("-fx-background-color: red");
+    public void resetGame(){
+        initialize();
     }
-
 
 }
