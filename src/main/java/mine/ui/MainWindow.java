@@ -1,6 +1,7 @@
 package mine.ui;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -16,7 +17,7 @@ public class MainWindow extends UiPart<Stage> {
     private InfoDisplay infoDisplay;
 
     @FXML
-    private MenuItem menuItem;
+    private MenuBar menuBar;
 
     @FXML
     private StackPane infoDisplayPlaceholder;
@@ -25,7 +26,7 @@ public class MainWindow extends UiPart<Stage> {
     private StackPane boardPlaceholder;
 
     public MainWindow(Stage primaryStage, Logic logic){
-        super(FXML,primaryStage);
+        super(FXML, primaryStage);
         this.primaryStage = primaryStage;
         this.logic=logic;
     }
