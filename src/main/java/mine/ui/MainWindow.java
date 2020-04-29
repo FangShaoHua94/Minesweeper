@@ -5,7 +5,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import mine.logic.Logic;
-import mine.model.Model;
+
 
 public class MainWindow extends UiPart<Stage> {
 

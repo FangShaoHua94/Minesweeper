@@ -24,5 +24,20 @@ public class Board {
         }
     }
 
+    public ObservableList<ObservableList<Tile>> getObservableBoard(){
+        return board;
+    }
+
+    public int getHeight(){
+        return difficulty.getHeight();
+    }
+
+    public int getWidth(){
+        return difficulty.getWidth();
+    }
+
+    public Tile getTile(int row,int col){
+        return board.get(row).get(col);
+    }
 
 }

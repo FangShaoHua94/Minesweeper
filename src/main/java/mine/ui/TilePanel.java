@@ -1,15 +1,19 @@
 package mine.ui;
 
 import javafx.fxml.FXML;
+
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import mine.model.Tile;
 
-import javax.swing.plaf.synth.Region;
+import javafx.scene.layout.Region;
 
 
 public class TilePanel extends UiPart<Region> {
 
     private static final String FXML = "TilePanel.fxml";
+
+    private Tile tile;
 
     @FXML
     private Label value;
@@ -17,8 +21,9 @@ public class TilePanel extends UiPart<Region> {
     @FXML
     private Button button;
 
-    public TilePanel() {
+    public TilePanel(Tile tile) {
         super(FXML);
+        this.tile=tile;
     }
 
 
