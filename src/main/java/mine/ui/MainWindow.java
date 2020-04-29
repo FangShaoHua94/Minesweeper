@@ -5,6 +5,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import mine.logic.Logic;
+import mine.model.Model;
 
 public class MainWindow extends UiPart<Stage> {
 
@@ -28,6 +29,7 @@ public class MainWindow extends UiPart<Stage> {
         super(FXML, primaryStage);
         this.primaryStage = primaryStage;
         this.logic=logic;
+        logic.initializeBoard();
     }
 
     public void show(){
@@ -38,7 +40,7 @@ public class MainWindow extends UiPart<Stage> {
         infoDisplay = new InfoDisplay();
         infoDisplayPlaceholder.getChildren().add(infoDisplay.getRoot());
 
-        board = new BoardPanel();
+        board = new BoardPanel(logic.getBoard());
         boardPlaceholder.getChildren().add(board.getRoot());
     }
 

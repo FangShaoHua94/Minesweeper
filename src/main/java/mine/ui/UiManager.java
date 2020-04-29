@@ -2,12 +2,12 @@ package mine.ui;
 
 import javafx.stage.Stage;
 import mine.logic.Logic;
+import mine.model.Model;
 
 public class UiManager implements Ui{
 
     private MainWindow mainWindow;
     private Logic logic;
-
 
     public UiManager(Logic logic){
         this.logic=logic;

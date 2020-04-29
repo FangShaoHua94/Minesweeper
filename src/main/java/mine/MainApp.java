@@ -23,7 +23,7 @@ public class MainApp extends Application {
     public void init(){
         model = new ModelManager();
         storage = new StorageManager();
-        logic = new LogicManager();
+        logic = new LogicManager(model,storage);
         ui = new UiManager(logic);
     }
 
