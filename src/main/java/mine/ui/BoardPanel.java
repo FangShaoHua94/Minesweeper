@@ -11,6 +11,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.TilePane;
 import mine.model.Board;
 import mine.model.Tile;
 
@@ -32,11 +33,7 @@ public class BoardPanel extends UiPart<Region>{
     private void setUp(){
         for(int i=0;i<board.getHeight();i++){
             for(int j=0;j<board.getWidth();j++){
-                Button button=new Button();
-                button.setPrefSize(30,30);
-                button.setMinSize(30,30);
-                button.setMaxSize(30,30);
-                boardPane.add(button,i,j);
+                boardPane.add(new TilePanel(board.getTile(i,j)).getRoot(),i,j);
             }
         }
     }
