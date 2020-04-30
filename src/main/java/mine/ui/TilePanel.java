@@ -28,17 +28,25 @@ public class TilePanel extends UiPart<Region> {
         setUpClick();
     }
 
+    // todo - on mouse drag effect
     public void setUpClick(){
+        if(tile.isRevealedTile()){
+            return;
+        }
         button.addEventFilter(MouseEvent.MOUSE_PRESSED, e -> {
-            if (e.getButton() == MouseButton.PRIMARY) {
-                tile.revealTile();
+            if (e.getButton() == MouseButton.SECONDARY) {
+                if (tile.isFlaggedTile()) {
+                    tile.removeFlag();
+                } else {
+                    tile.flagTile();
+                }
             }
         });
         button.addEventFilter(MouseEvent.MOUSE_RELEASED, e -> {
-            if (e.getButton() == MouseButton.SECONDARY) {
-                tile.flagTile();
+            if (e.getButton() == MouseButton.PRIMARY) {
+                System.out.println(getRoot().getParent());
+                tile.revealTile();
             }
         });
     }
-
 }
