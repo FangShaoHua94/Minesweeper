@@ -4,6 +4,8 @@ import javafx.fxml.FXML;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import mine.model.Tile;
 
 import javafx.scene.layout.Region;
@@ -23,7 +25,20 @@ public class TilePanel extends UiPart<Region> {
     public TilePanel(Tile tile) {
         super(FXML);
         this.tile=tile;
+        setUpClick();
     }
 
+    public void setUpClick(){
+        button.addEventFilter(MouseEvent.MOUSE_PRESSED, e -> {
+            if (e.getButton() == MouseButton.PRIMARY) {
+                tile.revealTile();
+            }
+        });
+        button.addEventFilter(MouseEvent.MOUSE_RELEASED, e -> {
+            if (e.getButton() == MouseButton.SECONDARY) {
+                tile.flagTile();
+            }
+        });
+    }
 
 }
