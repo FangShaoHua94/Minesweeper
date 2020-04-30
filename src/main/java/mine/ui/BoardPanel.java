@@ -14,18 +14,14 @@ import javafx.scene.layout.StackPane;
 import mine.model.Board;
 import mine.model.Tile;
 
-public class BoardPanel extends UiPart<Region>{
-
-    private static final String FXML = "BoardPanel.fxml";
+public class BoardPanel {
 
     private Board board;
-
-    @FXML
-    private GridPane boardPane;
+    private GridPane gridPane;
 
     public BoardPanel(Board board) {
-        super(FXML);
         this.board=board;
+        gridPane = new GridPane();
         setUp();
     }
 
@@ -36,10 +32,13 @@ public class BoardPanel extends UiPart<Region>{
                 button.setPrefSize(30,30);
                 button.setMinSize(30,30);
                 button.setMaxSize(30,30);
-                boardPane.add(button,i,j);
+                gridPane.add(button,i,j);
             }
         }
     }
 
+    public GridPane getBoard(){
+        return gridPane;
+    }
 }
 

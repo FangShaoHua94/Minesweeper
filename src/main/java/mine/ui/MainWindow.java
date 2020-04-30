@@ -41,7 +41,7 @@ public class MainWindow extends UiPart<Stage> {
         infoDisplayPlaceholder.getChildren().add(infoDisplay.getRoot());
 
         board = new BoardPanel(logic.getBoard());
-        boardPlaceholder.getChildren().add(board.getRoot());
+        boardPlaceholder.getChildren().add(board.getBoard());
     }
 
 }
