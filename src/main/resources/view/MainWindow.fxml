@@ -10,10 +10,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.stage.Stage?>
 
-<fx:root minHeight="200.0" minWidth="449.0" title="Minesweeper" type="Stage" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root minHeight="535.0" minWidth="425.0" title="Minesweeper" type="Stage" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <scene>
       <Scene>
-         <VBox prefHeight="85.0" prefWidth="449.0">
+         <VBox prefHeight="85.0" prefWidth="425.0">
             <children>
                <MenuBar fx:id="menuBar">
                  <menus>
