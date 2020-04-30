@@ -8,7 +8,6 @@ import mine.model.Tile;
 
 import javafx.scene.layout.Region;
 
-
 public class TilePanel extends UiPart<Region> {
 
     private static final String FXML = "TilePanel.fxml";
