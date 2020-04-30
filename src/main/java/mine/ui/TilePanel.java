@@ -26,5 +26,4 @@ public class TilePanel extends UiPart<Region> {
     }
 
 
-
 }

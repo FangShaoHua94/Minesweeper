@@ -6,7 +6,7 @@
 
 <StackPane maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" prefHeight="30.0" prefWidth="25.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="value" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" prefHeight="25.0" prefWidth="25.0" text="Label" />
-      <Button fx:id="button" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" text="Button" />
+      <Label fx:id="value" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" prefHeight="25.0" prefWidth="25.0" />
+      <Button fx:id="button" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" />
    </children>
 </StackPane>

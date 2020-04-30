@@ -30,6 +30,7 @@ public class BoardPanel extends UiPart<Region>{
         setUp();
     }
 
+    // todo - currently hard code to make the board aligned.
     private void setUp(){
         for(int i=0;i<board.getHeight();i++){
             for(int j=0;j<board.getWidth();j++){
